@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Bubble Sort Benchmark</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.01Gold (X11; I; SunOS 5.5.1 sun4u) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="http://cag-www.lcs.mit.edu/raw/graphics/raw-title3.JPG" BGCOLOR="#FFFFFF"
+TEXT="#00000000" LINK="#0000FF" VLINK="#0000FF" ALINK="#FFFF">
+<BR><BR><BR><BR><BR><UL><UL><UL>
+
+<H1><A HREF="../README.html">Bubble Sort Benchmark</A></H1>
+
+<P><A HREF=".">Directory Contents</A></P>
+
+Bubble sort, one of the simplest algorithms for sorting an array,
+consists of repeatedly exchanging pairs of adjacent array elements
+that are out of order until no such pair remains.  The serial software
+implementation of bubble sort has a time complexity that is <IMG WIDTH=39 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline43" SRC="../../doc/img4.gif">
+in the number of elements - only one pair of numbers can be examined
+at a time, and <I>n</I> passes must be taken through the array, where <I>n</I>
+is the number of elements.  In contrast, by parallelizing exchanges,
+the RawCS parallel hardware version sorts elements in a number of
+clock cycles that is linear with <I>n</I>, and requires an amount of
+hardware on the order of <I>n</I>.
+
+</BODY>
+</HTML>

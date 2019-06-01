@@ -1,0 +1,11 @@
+total gate count = 59525
+gate count per node = 419
+number of nodes = 63
+gate count per register = 514
+number of registers = 64
+gate count per controller = 231
+number of controllers = 1
+number of FPGAs = 64
+u-cycle count per emu cycle = 21
+total u-cycles to solve = 672
+software runtime = 0.000163 seconds

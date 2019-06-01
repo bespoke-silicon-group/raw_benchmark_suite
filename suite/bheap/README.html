@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Binary Heap Benchmark</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.01Gold (X11; I; SunOS 5.5.1 sun4u) [Netscape]">
+</HEAD>
+
+<BODY BACKGROUND="http://cag-www.lcs.mit.edu/raw/graphics/raw-title3.JPG" BGCOLOR="#FFFFFF"
+TEXT="#00000000" LINK="#0000FF" VLINK="#0000FF" ALINK="#FFFF">
+<BR><BR><BR><BR><BR><UL><UL><UL>
+
+<H1><A HREF="../README.html">Binary Heap Benchmark</A></H1>
+
+<P><A HREF=".">Directory Contents</A></P>
+
+This benchmark implements the heapifying operation to convert an
+arbitrary binary tree structure into a binary heap in which the value
+at each node satisfies the heap property - each node's value is
+greater than the values of both children nodes. Heapifying consists of
+comparing the element at the current node with the elements of its
+children, determining if the heap property is violated, and swapping
+the appropriate elements if so.
+This algorithm makes a number of swaps proportional to the number of
+nodes in the tree, <I>N</I>.  The hardware version converts the tree to a
+heap in a number of clock cycles that is proportional to
+<IMG WIDTH=55 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline39" SRC="../../doc/img2.gif">.  Each node of the tree is implemented as a module that
+can read the contents of its left and right children, compare its own
+element to these two values, and update its own as well as one of its
+children's elements. 
+The tree will satisfy the heap property after <IMG WIDTH=37 HEIGHT=24 ALIGN=MIDDLE ALT="tex2html_wrap_inline41" SRC="../../doc/img3.gif"> passes.
+Parallelism is exploited in allowing all nodes at one level to be
+active simultaneously.
+
+
+</BODY>
+</HTML>

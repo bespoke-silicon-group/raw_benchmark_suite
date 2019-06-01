@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>DES Benchmark</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (X11; I; SunOS 4.1.3_U1 sun4m) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="http://cag-www.lcs.mit.edu/raw/graphics/raw-title3.JPG" BGCOLOR="#FFFFFF"
+TEXT="#00000000" LINK="#0000FF" VLINK="#0000FF" ALINK="#FFFF">
+<BR><BR><BR><BR><BR><UL><UL><UL>
+
+<H1><A HREF="../README.html">DES Benchmark</A></H1>
+
+<P><A HREF=".">Directory Contents</A></P>
+
+The Data Encryption Standard (DES) is a system
+developed for the U.S. government for use by the general public. The
+DES algorithm, a combination of substitution and permutation, derives
+its strength from repeated application of these two techniques, one on
+top of the other, for a total of 16 cycles. The software algorithm
+used in this benchmark was adopted from Eric Young's fast encryption
+package.  It performs rotation to align bits for simpler permutation.
+As a result, this version of encryption requires only 42 operations
+per substitution and permutation cycle. In contrast, the RAW
+implementation takes advantage of the independence between each DES
+encryption and decryption operation.  It performs <I>n</I> encryptions or
+<I>n</I> decryptions simultaneously, where <I>n</I> is the number of hardware
+DES modules in the design.  For each encryption, we use a lookup table
+to bypass the shifting and substitution operations.  As a result, an
+individual hardware DES module is expected to achieve performance
+similar to the best software solution and thus achieve an <I>O</I>(<I>n</I>)
+speedup.
+
+
+</BODY>
+</HTML>
