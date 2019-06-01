@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Merge Sort Benchmark</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (X11; I; SunOS 4.1.3_U1 sun4m) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="http://cag-www.lcs.mit.edu/raw/graphics/raw-title3.JPG" BGCOLOR="#FFFFFF"
+TEXT="#00000000" LINK="#0000FF" VLINK="#0000FF" ALINK="#FFFF">
+<BR><BR><BR><BR><BR><UL><UL><UL>
+
+<H1><A HREF="../README.html">Merge Sort Benchmark</A></H1>
+
+<P><A HREF=".">Directory Contents</A></P>
+
+The hardware structure that implements the merge sort is a binary tree
+with the leaves of the tree each containing a single element of the
+data set that is to be sorted. Each node of the tree performs a
+comparison of its two inputs from its subnodes, stores the higher value
+in a register which is connected to the output of the node, and then
+tells the subnode that had the higher value to load a new value into
+its register. The subnode that gets the load signal performs the same
+operation, and so on, until a leaf node is hit. Once a leaf node gets a
+load signal, it loads its register with a zero.  As data is pulled off
+the top of the tree, larger data values float to the top. The sort is
+completed in <I>O</I>(<I>N</I>) time.
+
+</BODY>
+</HTML>

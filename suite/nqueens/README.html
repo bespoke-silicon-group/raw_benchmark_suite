@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>N Queens Benchmark</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (X11; I; SunOS 4.1.3_U1 sun4m) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="http://cag-www.lcs.mit.edu/raw/graphics/raw-title3.JPG" BGCOLOR="#FFFFFF"
+TEXT="#00000000" LINK="#0000FF" VLINK="#0000FF" ALINK="#FFFF">
+<BR><BR><BR><BR><BR><UL><UL><UL>
+
+<H1><A HREF="../README.html">N Queens Benchmark</A></H1>
+
+<P><A HREF=".">Directory Contents</A></P>
+
+The N-Queens benchmark solves the combinatorially hard chess problem of
+placing <I>N</I> queens on an <IMG WIDTH=47 HEIGHT=20 ALIGN=MIDDLE ALT="tex2html_wrap_inline75" SRC="../../doc/img7.gif"> chessboard such that no queen
+can attack any other.  The typical software solution to this problem
+uses a recursive search for a placement of the queens that meets the
+correct conditions.  In the RAW benchmark the program is represented
+by <I>N</I> computation elements, each of which is responsible for the
+position of one of the queens.  A token is passed back and forth
+between these computational elements representing control flow, much
+as a stack pointer would in the recursive software solution to the
+algorithm.  Each computational element monitors the positions of the
+queens in other columns to determine a legal position for its own
+queen.  During a particular cycle, only the computational element
+currently holding the token changes the position of its queen.
+
+</BODY>
+</HTML>

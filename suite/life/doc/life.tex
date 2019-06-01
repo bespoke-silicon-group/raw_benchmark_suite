@@ -1,0 +1,48 @@
+WRITE UP
+--------
+
+\subsection {Game of Life}
+
+This benchmark implements Conway's Game of Life program \cite{Berlekamp82}.
+The game is represented on an two-dimensional array of cells, each cell
+being alive or dead at any given time. The program begins with an 
+initial configuration for the cells, and henceforth obeys the
+following set of rules : a living cell remains alive if it has exactly
+two or three living neighbors, otherwise it dies; a dead cell becomes alive
+if it has exactly three living neighbors, otherwise it stays dead.
+
+The Game of Life program was implemented on reconfigurable hardware
+on the Spyder machine \cite{spyder}. The Spyder project implemented
+a processor with reconfigurable execution units, attached to two high
+bandwidth register banks. This is different from our approach, in
+which we flatten out the array of cells onto FPGA hardware, to
+obtain large-scale data parallelism. 
+
+This program illustrates the benefits of reconfigurable logic when
+the data widths dealt with are not the standard data widths of conventional
+computers, such as 32 or 64 bits. Here we deal with 1-bit data,
+which is maniputed more efficiently and with less memory wastage
+in hardware than in software.
+
+BIBTEX entries
+--------------
+
+@InProceedings(spyder,
+        Author="C. Iseli and E. Sanchez",
+        Title="Spyder: A Reconfigurable VLIW Processor using FPGAs",
+        BookTitle="Proceedings IEEE Workshop on FPGA-based Custom 
+                Computing Machines",
+        Publisher="IEEE",
+        Address="Napa, CA",
+        Month="April",
+        Year="1993",
+        Pages="17-24")
+
+@InProceedings(Berlekamp82,
+        Author="E. R. Berlekamp and J. H. Conway and R. K. Guy",
+        BookTitle="Winning Ways",
+        Publisher="Academic",
+        Address="London",
+        Year="1982")
+
+

@@ -1,0 +1,25 @@
+#------------------------------------------------------------------------------
+# $Header: /projects/raw/cvsroot/benchmark/suites/life/src/Makefile.local,v 1.5 1997/08/09 21:04:52 jbabb Exp $
+#
+# RAW Benchmark Suite Local Makefile for Life
+#
+# Authors: Rajeev Kumar Barua      (barua@lcs.mit.edu)
+#          Jonathan Babb           (jbabb@lcs.mit.edu)
+#
+# Copyright @ 1997 MIT Laboratory for Computer Science, Cambridge, MA 02129
+#------------------------------------------------------------------------------
+
+# local things to make:
+LOCAL_FILES = cell_list.v generate_aux
+
+$(LIBRARY_FILE): ../src/cell_list.v
+	@echo "Touching library file..."
+	touch $@
+
+../src/cell_list.v: generate_aux
+	@echo "Generating ../src/cell_list.v..."
+	$< > $@
+
+generate_aux: ../src/generate_aux.c
+	@echo "Compiling generate_aux..."
+	$(CC) $(CFLAGS) $< -o $@ $(LFLAGS)
