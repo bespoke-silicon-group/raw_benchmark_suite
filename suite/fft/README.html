@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>FFT Benchmark</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (X11; I; SunOS 4.1.3_U1 sun4m) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="http://cag-www.lcs.mit.edu/raw/graphics/raw-title3.JPG" BGCOLOR="#FFFFFF"
+TEXT="#00000000" LINK="#0000FF" VLINK="#0000FF" ALINK="#FFFF">
+<BR><BR><BR><BR><BR><UL><UL><UL>
+
+<H1><A HREF="../README.html">FFT Benchmark</A></H1>
+
+<P><A HREF=".">Directory Contents</A></P>
+
+The Fast Fourier Transform (FFT) over the field of complex
+numbers[<A HREF="#press95"></A>] is a common signal processing applications with
+inherent parallelism. An FFT of size <I>N</I> can be performed in hardware
+in a loop of length <IMG WIDTH=37 HEIGHT=24 ALIGN=MIDDLE ALT="tex2html_wrap_inline41" SRC="../../doc/img3.gif"> where each iteration of the loop permits
+<I>N</I>/2 computations to run in parallel. Further, the loop of length
+<IMG WIDTH=37 HEIGHT=24 ALIGN=MIDDLE ALT="tex2html_wrap_inline41" SRC="../../doc/img3.gif"> can be unrolled into a butterfly network and pipelined by
+overlapping the successive iterations. Our hardware version employs a
+number theoretic version of the FFT which operates in the ring of
+integers modulo <IMG WIDTH=57 HEIGHT=30 ALIGN=MIDDLE ALT="tex2html_wrap_inline69" SRC="../../doc/img5.gif">. This differs from the complex FFT since
+arithmetic operations take place in a ring of integers. The basic FFT
+structure, including the inherent parallelism of the algorithm, is
+the same for both the complex and number theoretic cases. Note that
+the FFT data width is <I>N</I>/2+1 bits.
+
+</BODY>
+</HTML>

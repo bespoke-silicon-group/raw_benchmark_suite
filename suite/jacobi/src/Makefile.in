@@ -1,0 +1,55 @@
+#------------------------------------------------------------------------------
+# $Header: /projects/raw/cvsroot/benchmark/suites/jacobi/src/Makefile.in,v 1.8 1997/08/15 18:36:18 jbabb Exp $
+#
+# RAW Benchmark Suite Makefile for Jacobi on RAW
+#
+# Authors: Jonathan Babb           (jbabb@lcs.mit.edu)
+#
+# Copyright @ 1997 MIT Laboratory for Computer Science, Cambridge, MA 02129
+#------------------------------------------------------------------------------
+
+# benchmark name:
+BENCHNAME = Jacobi
+
+# parameterized benchmark versions to generate:
+BENCHMARKS =               \
+	04_04_08_64_scan.v \
+	08_08_08_64_scan.v \
+	16_16_08_64_scan.v \
+	32_32_08_64_scan.v \
+	32_64_08_64_scan.v
+
+# identify smallest benchmark version:
+BENCHSMALL = 04_04_08_64_scan.v
+
+# benchmarks to check before distribution:
+BENCHCHECK = \
+	04_04_08_64_scan.v \
+	16_16_08_64_scan.v
+
+# generate program files:
+GENERATE_FILES = ../src/generate.c
+
+# driver program files:
+DRIVER_FILES = ../src/driver.c
+
+# verilog library program file:
+LIBRARY_FILE   = ../src/library.v
+
+# FPGA place and route hosts file:
+HOSTS_FILE    = ../../../include/mit.hosts
+
+# system architecture:
+SYSTEM_ARCH   = raw
+
+# maximum number of VirtuaLogic boards to use (1-6):
+MAX_BOARDS    = 5
+
+#speed of virtuaLogic emulator (1-8)
+VLE_SPEED     = 7
+
+# include directory:
+INCLUDE_DIR   = ../../../include
+
+# standard Makefile:
+include $(INCLUDE_DIR)/$(SYSTEM_ARCH).make

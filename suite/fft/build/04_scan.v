@@ -1,0 +1,36 @@
+`include "main_header.v"
+wire [2:0] nLeftOut_0;
+wire [2:0] nRightOut_0;
+wire [2:0] nLeftOut_1;
+wire [2:0] nRightOut_1;
+wire [2:0] nLeftOut_2;
+wire [2:0] nRightOut_2;
+wire [2:0] nLeftOut_3;
+wire [2:0] nRightOut_3;
+wire [2:0] nLeftOut_4;
+wire [2:0] nRightOut_4;
+wire [2:0] nLeftOut_5;
+wire [2:0] nRightOut_5;
+wire [2:0] nLeftOut_6;
+wire [2:0] nRightOut_6;
+wire [2:0] nLeftOut_7;
+wire [2:0] nRightOut_7;
+wire [2:0] nLeftOut_8;
+wire [2:0] nRightOut_8;
+wire [0:0] nEnable;
+wire [0:0] ScanEnable;
+wire [1:0] ScanLink0;
+wire [1:0] ScanLink1;
+wire [1:0] ScanLink2;
+wire [1:0] ScanLink3;
+wire [1:0] ScanLink4;
+FFT_Node #( 2, 1, 5, 1 ) node_0 ( .Clk(Clk), .Reset(Reset), .RD(RD), .WR(WR), .Addr(Addr), .DataIn(DataIn), .DataOut(DataOut), .Idl(1'd0), .Idr(1'd0), .Ids(1'd0), .Enable(nEnable), .inleft(nLeftOut_0), .inright(nRightOut_0), .outleft(nLeftOut_0), .outright(nRightOut_0), .ScanIn(ScanLink0), .ScanOut(ScanLink1), .ScanEnable(ScanEnable) );
+FFT_Node #( 2, 1, 5, 1 ) node_1 ( .Clk(Clk), .Reset(Reset), .RD(RD), .WR(WR), .Addr(Addr), .DataIn(DataIn), .DataOut(DataOut), .Idl(1'd0), .Idr(1'd0), .Ids(1'd0), .Enable(nEnable), .inleft(nLeftOut_1), .inright(nRightOut_1), .outleft(nLeftOut_1), .outright(nRightOut_1), .ScanIn(ScanLink1), .ScanOut(ScanLink2), .ScanEnable(ScanEnable) );
+FFT_Node #( 2, 1, 0, 1 ) node_2 ( .Clk(Clk), .Reset(Reset), .RD(RD), .WR(WR), .Addr(Addr), .DataIn(DataIn), .DataOut(DataOut), .Idl(1'd0), .Idr(1'd0), .Ids(1'd0), .Enable(nEnable), .inleft(nLeftOut_0), .inright(nRightOut_0), .outleft(nLeftOut_2), .outright(nRightOut_2), .ScanIn(2'd0), .ScanEnable(1'b0) );
+FFT_Node #( 2, 1, 0, 1 ) node_3 ( .Clk(Clk), .Reset(Reset), .RD(RD), .WR(WR), .Addr(Addr), .DataIn(DataIn), .DataOut(DataOut), .Idl(1'd0), .Idr(1'd0), .Ids(1'd0), .Enable(nEnable), .inleft(nLeftOut_1), .inright(nRightOut_1), .outleft(nLeftOut_3), .outright(nRightOut_3), .ScanIn(2'd0), .ScanEnable(1'b0) );
+FFT_Node #( 2, 1, 0, 1 ) node_4 ( .Clk(Clk), .Reset(Reset), .RD(RD), .WR(WR), .Addr(Addr), .DataIn(DataIn), .DataOut(DataOut), .Idl(1'd0), .Idr(1'd0), .Ids(1'd0), .Enable(nEnable), .inleft(nLeftOut_2), .inright(nLeftOut_3), .outleft(nLeftOut_4), .outright(nRightOut_4), .ScanIn(2'd0), .ScanEnable(1'b0) );
+FFT_Node #( 2, 1, 1, 1 ) node_5 ( .Clk(Clk), .Reset(Reset), .RD(RD), .WR(WR), .Addr(Addr), .DataIn(DataIn), .DataOut(DataOut), .Idl(1'd0), .Idr(1'd0), .Ids(1'd0), .Enable(nEnable), .inleft(nRightOut_2), .inright(nRightOut_3), .outleft(nLeftOut_5), .outright(nRightOut_5), .ScanIn(2'd0), .ScanEnable(1'b0) );
+FFT_Node #( 2, 1, 5, 1 ) node_6 ( .Clk(Clk), .Reset(Reset), .RD(RD), .WR(WR), .Addr(Addr), .DataIn(DataIn), .DataOut(DataOut), .Idl(1'd0), .Idr(1'd0), .Ids(1'd0), .Enable(nEnable), .inleft(nLeftOut_4), .inright(nLeftOut_5), .outleft(nLeftOut_6), .outright(nRightOut_6), .ScanIn(ScanLink2), .ScanOut(ScanLink3), .ScanEnable(ScanEnable) );
+FFT_Node #( 2, 1, 5, 1 ) node_7 ( .Clk(Clk), .Reset(Reset), .RD(RD), .WR(WR), .Addr(Addr), .DataIn(DataIn), .DataOut(DataOut), .Idl(1'd0), .Idr(1'd0), .Ids(1'd0), .Enable(nEnable), .inleft(nRightOut_4), .inright(nRightOut_5), .outleft(nLeftOut_7), .outright(nRightOut_7), .ScanIn(ScanLink3), .ScanOut(ScanLink4), .ScanEnable(ScanEnable) );
+FFT_Control #( 2, 1, 1 ) node_Control ( .Clk(Clk), .Reset(Reset), .RD(RD), .WR(WR), .Addr(Addr), .DataIn(DataIn), .DataOut(DataOut), .Id(1'd0), .Enable(nEnable), .ScanIn(ScanLink4), .ScanOut(ScanLink0), .ScanEnable(ScanEnable), .ScanId(1'd1) );
+`include "main_trailer.v"

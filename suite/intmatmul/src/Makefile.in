@@ -1,0 +1,49 @@
+#------------------------------------------------------------------------------
+# $Header: /projects/raw/cvsroot/benchmark/suites/intmatmul/src/Makefile.in,v 1.11 1997/08/10 04:05:42 jbabb Exp $
+#
+# RAW Benchmark Suite Makefile for Integer Matrix Multiply on RAW
+#
+# Authors: Michael B. Taylor       (mtaylor@lcs.mit.edu)
+#          Jonathan Babb           (jbabb@lcs.mit.edu)
+#
+# Copyright @ 1997 MIT Laboratory for Computer Science, Cambridge, MA 02129
+#------------------------------------------------------------------------------
+
+# benchmark name:
+BENCHNAME = Intmatmul
+
+# parameterized benchmark versions to generate:
+BENCHMARKS = 02_8_scan.v 04_8_scan.v 08_8_scan.v 16_8_scan.v
+
+# identify smallest benchmark version:
+BENCHSMALL = 02_8_scan.v
+
+# benchmarks to check before distribution:
+BENCHCHECK = 02_8_scan.v 04_8_scan.v
+
+# generate program files:
+GENERATE_FILES = ../src/generate.c
+
+# driver program files:
+DRIVER_FILES = ../src/driver.c ../src/mm.c
+
+# verilog library program file:
+LIBRARY_FILE   = ../src/library.v
+
+# FPGA place and route hosts file:
+HOSTS_FILE    = ../../../include/mit.hosts
+
+# system architecture:
+SYSTEM_ARCH   = raw
+
+# maximum number of VirtuaLogic boards to use (1-6):
+MAX_BOARDS    = 5
+
+#speed of virtuaLogic emulator (1-8)
+VLE_SPEED     = 7
+
+# include directory:
+INCLUDE_DIR   = ../../../include
+
+# standard Makefile:
+include $(INCLUDE_DIR)/$(SYSTEM_ARCH).make

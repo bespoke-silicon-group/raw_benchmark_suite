@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Semiring Graph Benchmark</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.01Gold (X11; I; SunOS 5.5.1 sun4u) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="http://cag-www.lcs.mit.edu/raw/graphics/raw-title3.JPG" BGCOLOR="#FFFFFF"
+TEXT="#00000000" LINK="#0000FF" VLINK="#0000FF" ALINK="#FFFF">
+<BR><BR><BR><BR><BR><UL><UL><UL>
+
+<H1><A HREF="../README.html">Semiring Graph Benchmark</A></H1>
+
+<P><A HREF=".">Directory Contents</A></P>
+
+<P>The RAW benchmarks for single source shortest path (ssp), multiplicative
+shortest path (spm) and transitive closure (tc) specialize both the algorithm
+and the topology of the input graph. In each case we generate computation
+elements for each node of the input graph and then use the RawCS generator
+to connect these elements in the same topology as the problem input graph.
+For the shortest path problems the computation element is a circuit that
+finds the minimum of its inputs. For the transitive closure problem the
+computation element is an AND function across its inputs. With the exception
+of ssp64-mesh, each of the graph benchmark cases is randomly generated
+with a maximum node in-degree of eight, and an average in-degree of four.
+For more details read <A HREF="ftp://cag.lcs.mit.edu/pub/raw/spie96.ps.Z">Solving
+graph problems with dynamic computation structures</A>, by Jonathan Babb,
+Matthew Frank, and Anant Agarwal. </P>
+
+</BODY>
+</HTML>

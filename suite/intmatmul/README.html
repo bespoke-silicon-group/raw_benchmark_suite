@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Integer Matrix Multiply Benchmark</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (X11; I; SunOS 4.1.3_U1 sun4m) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="http://cag-www.lcs.mit.edu/raw/graphics/raw-title3.JPG" BGCOLOR="#FFFFFF"
+TEXT="#00000000" LINK="#0000FF" VLINK="#0000FF" ALINK="#FFFF">
+<BR><BR><BR><BR><BR><UL><UL><UL>
+
+<H1><A HREF="../README.html">Integer Matrix Multiply Benchmark</A></H1>
+
+<P><A HREF=".">Directory Contents</A></P>
+
+This version of Matrix Multiply multiplies two <IMG WIDTH=47 HEIGHT=20 ALIGN=MIDDLE ALT="tex2html_wrap_inline75" SRC="../../doc/img7.gif"> matrices in
+<IMG WIDTH=78 HEIGHT=24 ALIGN=MIDDLE ALT="tex2html_wrap_inline77" SRC="../../doc/img8.gif"> time given <IMG WIDTH=44 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline79" SRC="../../doc/img9.gif"> hardware multipliers. This runtime
+is achieved by implementing a vector-matrix multiplier, which stores
+an initial matrix away, and repeatedly returns its product with an
+input vector.  The multiplication stage of the dot products is in
+parallel while the additions are scheduled in a binary-tree
+fashion, with <IMG WIDTH=37 HEIGHT=24 ALIGN=MIDDLE ALT="tex2html_wrap_inline41" SRC="../../doc/img3.gif"> levels.
+
+</BODY>
+</HTML>

@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Jacobi Benchmark Example</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (X11; I; SunOS 4.1.3_U1 sun4m) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="http://cag-www.lcs.mit.edu/raw/graphics/raw-title3.JPG" BGCOLOR="#FFFFFF"
+TEXT="#00000000" LINK="#0000FF" VLINK="#0000FF" ALINK="#FFFF">
+<BR><BR><BR><BR><BR><UL><UL><UL>
+
+<H2><A HREF="../README.html">Jacobi Benchmark Example</A></H2>
+
+<P><A HREF=".">Directory Contents</A></P>
+
+<H4>Description</H4>
+
+<P>
+
+Jacobi relaxation is an iterative algorithm which, given a set
+of boundary conditions, finds discretized solutions to differential
+equations of the form <IMG WIDTH=92 HEIGHT=28 ALIGN=MIDDLE ALT="tex2html_wrap_in
+line73" SRC="../../doc/img6.gif">.  Each step
+of the algorithm replaces each node of a grid with the average of the
+values of its nearest neighbors.  We have implemented an integer
+version of Jacobi relaxation.  A computation element representing each
+grid point simply produces an average of its four inputs.  We use the
+RawCS generator to generate connections between each computation
+element and its four neighbors.  The resulting circuit has a simple
+regular grid structure, reflective of the data dependence graph of the
+algorithm. <A HREF="doc/jacobi.ps.gz">Here</A>
+is a postscript excerpt furthering describing Jacobi from problem set 1
+of the 6.846 class at MIT in 1992.</P>
+
+<H4>Sources</H4>
+
+<P>This benchmark is composed of the following sources:</P>
+
+<UL>
+<LI><A HREF="src/Makefile.in">Makefile.in </A>- makefile for this benchmark</LI>
+
+<LI><A HREF="src/generate.c">generate.c</A> - C program used to generate
+the top-level topology for the benchmark.</LI>
+
+<LI><A HREF="src/driver.c">driver.c</A> - C driver that is compiled in
+one of three modes:</LI>
+
+<UL>
+<LI>driver-soft - software version</LI>
+
+<LI>driver-sim - simulation vector generator</LI>
+
+<LI>driver-hard - hardware driver</LI>
+</UL>
+
+<LI><A HREF="src/library.v">library.v</A> - contains the verilog components
+for this benchmark.</LI>
+</UL>
+
+<H4>Build</H4>
+
+<P>The <A HREF="build">build</A> directory contains a <A HREF="build/Makefile">Makefile
+</A>that simply includes the source <A HREF="src/Makefile.in">Makefile.in</A>.
+All building is done via make invokations from this directory. To get a
+feel for the possible make targets, check out the standard makefile that
+is included by Makefile.in, <A HREF="../../include/raw.make">raw.make</A>.
+</P>
+
+<H4>Netlists</H4>
+
+<P> Included in the benchmark distribution are some baseline generated
+netlists in generic verilog, and those same cases synthesized to the
+<A HREF="../../include/vmw/lib">VMW reference library</A>
+:
+
+<UL>
+<LI> <A HREF="build/04_04_08_64_scan.v">04_04_08_64_scan.v</A> </LI>
+<LI> <A HREF="build/08_08_08_64_scan.v">08_08_08_64_scan.v</A> </LI>
+<LI> <A HREF="build/16_16_08_64_scan.v">16_16_08_64_scan.v</A> </LI>
+<LI> <A HREF="build/32_32_08_64_scan.v">32_32_08_64_scan.v</A> </LI>
+<LI> <A HREF="build/32_64_08_64_scan.v">32_64_08_64_scan.v</A> </LI>
+<LI> <A HREF="build/04_04_08_64_scan_vmw.v">04_04_08_64_scan_vmw.v</A> </LI>
+<LI> <A HREF="build/08_08_08_64_scan_vmw.v">08_08_08_64_scan_vmw.v</A> </LI>
+<LI> <A HREF="build/16_16_08_64_scan_vmw.v">16_16_08_64_scan_vmw.v</A> </LI>
+<LI> <A HREF="build/32_32_08_64_scan_vmw.v">32_32_08_64_scan_vmw.v</A> </LI>
+<LI> <A HREF="build/32_64_08_64_scan_vmw.v">32_64_08_64_scan_vmw.v</A> </LI>
+</UL>
+</P>
+The parameters are X dimension, Y dimension, data width, maximum iterations, and scan or bus I/O. Execute "gmake check" to simulate these netlists in the
+default verilog simulator (currently Cadence).
+Back to <A HREF="../../doc/README.html">general documentation</A><A HREF="../../include/doc/README.html">.</A></P>
+
+</BODY>
+</HTML>
