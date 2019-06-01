@@ -1,0 +1,19 @@
+vsyn.timestamp: \
+                /home/vmw/lib/vmw_reference.v \
+                /home/vmw/lib/VMW.v \
+                system_vmw.v \
+                interface_vmw.v \
+                main_vmw.v \
+                vmw.mem \
+                /home/vmw/lib/vmw_synthprim.v \
+                /home/vmw/lib/hermes_array.v \
+                /home/vmw/lib/hermes_array_protos.v \
+                /home/vmw/lib/hermes_system.v \
+                /home/vmw/lib/hermes_system_protos.v \
+                /home/vmw/lib/hermes_backplane_1board.v \
+                /home/vmw/lib/hermes_zipper.v \
+                /home/vmw/lib/xilinx_prim.v \
+                vmw.clk\
+                vmw.mem\
+                vmw.pod\
+                vmw.prb

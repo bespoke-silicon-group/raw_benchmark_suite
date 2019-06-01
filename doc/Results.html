@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Results for Benchmark Suite</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.01Gold (X11; I; SunOS 5.5.1 sun4u) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#0000FF" VLINK="#0000FF" ALINK="#FFFF00" BACKGROUND="raw-title3.JPG">
+
+<P><BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+</P>
+
+<UL>
+<UL>
+<UL>
+<H1><A HREF="../README.html">Benchmark Suite Results</A></H1>
+
+<P>A reference results <A HREF="ReferenceResults.html">table</A><A
+HREF="../../ReferenceResults.html"> </A>compares execution of the
+current set of benchmark cases on an IKOS VirtuaLogic Emulator
+(software version 1.4.3) versus a 6.6 SPECint95 Sun Ultra Enterprise
+3000 (167MHZ processor) using gcc -O4. The following list defines the table
+headings:</P>
+
+<UL>
+<LI>name - name of benchmark category</LI>
+
+<LI>case - parameterized case name</LI>
+
+<LI>elements - number of instantiated &quot;parallel&quot; elements or
+nodes in the design</LI>
+
+<LI>bits - bit width of operations performed in hardware</LI>
+
+<LI>cycles - number of hardware cycles required</LI>
+
+<LI>soft-speed - speed in kilohertz of software version doing the same
+work as the hardware cycles</LI>
+
+<LI>total-gates - total gate count, including Virtual Wires (global communication)
+overhead</LI>
+
+<LI>useful-gates - useful gate count, not including global communication
+overhead</LI>
+
+<LI>FPGAs - number of FPGAs used on the emulator</LI>
+
+<LI>v-cycles - number of emulator &quot;virtual clocks&quot; required per
+hardware clock cycle</LI>
+
+<LI>hard-clk - hardware clock rate (25MHZ / v-cycles)</LI>
+
+<LI>hard-speed - hardware execution speed (hard-clk / cycles)</LI>
+
+<LI>speedup - speedup of hardware versus software (hard-speed / soft-speed)</LI>
+
+<LI>per-fpga - speedup per FPGA (speedup / FPGAs)</LI>
+</UL>
+</UL>
+</UL>
+</UL>
+
+</BODY>
+</HTML>

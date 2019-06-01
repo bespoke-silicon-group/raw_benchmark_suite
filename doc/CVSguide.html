@@ -1,0 +1,430 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>RAW CVS Reference Guide</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (X11; I; SunOS 4.1.3_U1 sun4m) [Netscape]">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF"
+TEXT="#00000000" LINK="#0000FF" VLINK="#0000FF" ALINK="#FFFF">
+
+<H1><A HREF="GettingStarted.html">CVS Reference Guide</A></H1>
+
+<P>
+<HR SIZE=3>This guide describes the common CVS command set needed to proficiently
+contribute to RAW Benchmark development. For a more comprehensive description,
+see the <A HREF="http://www.loria.fr/~molli/cgi-bin/wilma.cgi/doc.847210383.html">CVS
+reference manual</A>.</P>
+
+<H4>1. Contents</H4>
+
+<UL>
+<LI><A HREF="#Help">Help</A></LI>
+
+<LI><A HREF="#Basic command set">Basic Command Set</A></LI>
+
+<LI><A HREF="#Advanced Command Set">Advanced Command Set</A></LI>
+
+<LI><A HREF="#Client/Server Notes">Client/Server Notes</A></LI>
+</UL>
+
+<H4><A NAME="Help"></A>2. Help</H4>
+
+<P>The <A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_85.html#SEC87">structure
+</A>of each CVS command, entered from the command line is:</P>
+
+<UL>
+<UL>
+<LI><TT>cvs [cvs-options] command [command-options] [files...]</TT></LI>
+</UL>
+</UL>
+
+<P>To get help use the -H flag with CVS or with a particular command:</P>
+
+<UL>
+<UL>
+<LI><TT>cvs -H</TT></LI>
+
+<LI><TT>cvs checkout -H</TT></LI>
+</UL>
+</UL>
+
+<P><A NAME="Basic command set"></A>3. Basic Command Set</P>
+
+<UL COMPACT>
+<DT><A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_26.html#SEC28">cvs
+login</A></DT>
+
+<DL COMPACT>
+<DL COMPACT>
+<DT>Do this first if you are running a CVS client on a remote machine.</DT>
+
+<DT>You will be prompted for you cvs password. See this <A HREF="#Client/Server Notes">note</A>
+if you have problems.</DT>
+</DL>
+</DL>
+
+<DT><A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_92.html#SEC96">cvs
+checkout</A></DT>
+
+<UL COMPACT>
+<DT>Next, change to your working directory (for example: <TT>cd ~/sandbox</TT>)
+and checkout a local copy of the module you want to work on. The main benchmark
+module is named <TT>benchmark</TT>. A new directory will be created called
+benchmark. If you want, you can just checkout a particular directory or
+file as well:</DT>
+
+<UL COMPACT>
+<UL COMPACT>
+<LI>Checkout benchmark main trunk: <TT>cvs checkout benchmark</TT></LI>
+
+<LI>Checkout benchmark/src directory: <TT>cvs checkout benchmark/suites</TT></LI>
+
+<LI>Checkout benchmark/src/worcom.for file: <TT>cvs checkout benchmark/doc/CVSguide.html</TT></LI>
+</UL>
+</UL>
+
+<DT>Generally, you should always checkout out the entire version as you
+will be expected to compile and test any changes before recommiting later.</DT>
+
+<DT>Checkout can also be used with the <TT>-r</TT> flag to checkout a particulare
+revision or branch:</DT>
+
+<UL COMPACT>
+<UL COMPACT>
+<LI>Checkout v02 revision: <TT>cvs checkout -r v02 benchmark</TT></LI>
+</UL>
+</UL>
+
+<P>Note that revisions are immutable, so they can never be changed and
+re-commited. Only the main trunk and branches can be commited back later.
+The <TT>-r</TT> flag refers to a tagged version which you are checking
+out. For each file in the repository you will get the RCS version of that
+file which matches that tag rather than the &quot;head&quot;, or latest
+version. Thus a tag defines a cross-section of RCS file revisions. (Note:
+RCS is the file-by-file version control system that CVS is built upon).</P>
+</UL>
+
+<DT><A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_125.html#SEC132">cvs
+update</A></DT>
+
+<DL COMPACT>
+<UL COMPACT>
+<DT>If other developers commit changes to the branch (or main trunk) you
+have checked out, you will need to update before you can commit your changes.
+Or you may just want to update your local version to reflect the latest
+changes on your current branch.</DT>
+
+<P>To update your copy of a module with any changes from the central repository
+execute:</P>
+
+<UL COMPACT>
+<UL COMPACT>
+<LI><TT>cvs update</TT></LI>
+</UL>
+</UL>
+
+<P>This will tell you which files have been updated (their names are displayed
+with a U before them), and which have been modified by you and not yet
+committed (preceded by an M).Here is a full list of <A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_127.html#SEC134">update
+outputs</A> from reference manual.</P>
+
+<P>It can be that when you do an update, the changes in the central copy
+clash with changes you have made in your own copy. You will be warned of
+any files that contain clashes by a preceding C. Inside the files the clashes
+will be marked in the file surrounded by lines of the form <TT>&lt;&lt;&lt;&lt;</TT>
+and <TT>&gt;&gt;&gt;&gt;</TT>. You have to resolve the clashes in your
+copy by hand. After an update where there have been clashes, your original
+version of the file is saved as <TT>`.#file.version'</TT>. </P>
+
+<P>If you feel you have messed up a file and wish to have CVS forget about
+your changes and go back to the version from the repository, delete the
+file and do an <TT>cvs update</TT>. CVS will announce that the file has
+been &quot;lost&quot; and will give you a fresh copy.</P>
+
+<P>To display all files which are not up-to-date without actually changing
+anything in your working directory:</P>
+
+<UL COMPACT>
+<UL COMPACT>
+<LI><TT>cvs -n -q update</TT></LI>
+</UL>
+</UL>
+
+<P>You can use the -r flag with <TT>cvs update</TT> as well, with the following
+possibilities:</P>
+
+<UL COMPACT>
+<UL COMPACT>
+<LI>Update local version to revision 01:<TT> cvs update -r v01</TT></LI>
+</UL>
+</UL>
+
+<P>If your local version is up-to-date with respect to your base version
+(as determined by your <A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_52.html#SEC54">sticky
+tag</A>), i.e. there are no file that need to be commited since your last
+checkout or update, update -r simply change your local version to reflect
+the repository, as-if you had checked-out that version from scratch. However,
+if you have changes, then update merges the differences between your changes
+and the base version with the -r version files into your local repository
+(see the manual if my explanation is unclear here!).</P>
+</UL>
+</DL>
+
+<DT><A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_95.html#SEC99">cvs
+commit</A></DT>
+
+<UL COMPACT>
+<DT>When you think your files are ready to be merged back into the repository
+for the rest of your developers to see, execute <TT>cvs commit</TT>. You
+will be put in an editor to make a message that describes the changes that
+you have made (for future reference). Your changes will then be added to
+the central copy. To add the comment without needing the editor, use:</DT>
+
+<UL COMPACT>
+<UL COMPACT>
+<LI><TT>cvs commit -m &quot;Comment for log file.&quot;</TT></LI>
+</UL>
+</UL>
+
+<P>When you do a commit, if you haven't updated to the most recent version
+of the files, CVS tells you this. You will have to first update, resolve
+any possible clashes, and then redo the commit.</P>
+
+<P>You should not commit changes until they are ready for consumption by
+other developers. At minimum you should compile you changes and verify
+that at least a minimum level of tests (say, the acid tests) pass.</P>
+</UL>
+
+<DT><A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_59.html#SEC61">cvs
+add</A> and <A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_60.html#SEC62">cvs
+remove </A></DT>
+
+<UL COMPACT>
+<DT>It can be that the changes you want to make involve a completely new
+file (or directory), or removing an existing one. The commands to use here
+are:</DT>
+</UL>
+</UL>
+
+<UL COMPACT>
+<UL COMPACT>
+<UL COMPACT>
+<LI><TT>cvs add filename</TT></LI>
+
+<LI><TT>cvs remove filename</TT></LI>
+</UL>
+
+<DT>You have to do a commit after these commands to make the additions
+and removes actually take affect. You may make any number of new files
+in your copy of the repository, but they will not be committed to the central
+copy unless you do a <TT>cvs add</TT>. </DT>
+
+<DT>CVS remove does not actually remove the files from the repository.
+It only removes them from the &quot;current list&quot; and puts the files
+in the CVS Attic. When another person checks out the module in the future
+they will not get the files that were removed. But if you ask for older
+versions that had the file before it was removed, the file will be checked
+out of the Attic.</DT>
+</UL>
+
+<DT><A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_115.html#SEC122">cvs
+release </A></DT>
+
+<UL COMPACT>
+<DT>When you are done with your local copy of the files for the time being
+and want to remove your local copy use <TT>cvs release directory. </TT>This
+must be done in the directory above the module sub-directory you which
+to release. It safely cancels the effects of <TT>cvs checkout</TT>. Usually
+you should do a commit first. Examples:</DT>
+
+<UL COMPACT>
+<UL COMPACT>
+<LI>Release benchmark directory: <TT>cvs release benchmark</TT></LI>
+
+<LI>Release and delete benchmark directory: <TT>cvs release -d benchmark</TT></LI>
+</UL>
+</UL>
+
+<P>NOTE: Take your time here. CVS will inform you of files that may have
+changed or it does not know about (watch for the ? lines) and then with
+ask you to confirm this action. Make sure you want to do this. </P>
+
+<P>NOTE: With the way we are using CVS, releasing is not strictly necessary.
+rm -r (or deletion via File Manager) is okay if you are sure you have successfully
+commited your changes.</P>
+</UL>
+
+<DT><A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_98.html#SEC105">cvs
+diff</A> </DT>
+
+<DD>To see the differences between your version of the files and the version
+in the repository:</DD>
+
+<UL COMPACT>
+<UL COMPACT>
+<LI><TT>cvs diff [`filename(s)']</TT></LI>
+</UL>
+</UL>
+
+<DT><A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_109.html#SEC116">cvs
+status</A></DT>
+
+<DD>To see the status of files and list the <A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_52.html#SEC54">sticky
+tag</A> and all branch and revision tags:</DD>
+
+<UL COMPACT>
+<UL COMPACT>
+<LI><TT>cvs status -v [`filename(s)']</TT></LI>
+</UL>
+</UL>
+
+<DT><A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_109.html#SEC116">cvs
+log </A></DT>
+
+<DD>To see the commit messages for files, and who made them:</DD>
+
+<UL COMPACT>
+<UL COMPACT>
+<LI><TT>cvs log [`filename(s)']</TT></LI>
+</UL>
+</UL>
+
+<DT><A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_109.html#SEC116">cvs
+annotate</A></DT>
+
+<DD>To see files annonated line by line be RCS revision, user and date:
+</DD>
+
+<UL COMPACT>
+<UL COMPACT>
+<LI><TT>cvs annotate[`filename(s)']</TT></LI>
+</UL>
+</UL>
+
+<DT><A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_103.html#SEC110">cvs
+history </A></DT>
+
+<UL COMPACT>
+<DT>To find out information about your CVS repositories use the <TT>cvs
+history</TT> command. By default history will show you all the entries
+that correspond to you. Use the -a option to show information about everyone.
+</DT>
+
+<UL COMPACT>
+<LI><TT>cvs history -a -o</TT> Shows you all the checked out modules</LI>
+
+<LI><TT>cvs history -a -T</TT> Reports all the tags for the modules</LI>
+
+<LI><TT>cvs history -a -e</TT> Reports all the information about everything</LI>
+</UL>
+</UL>
+</UL>
+
+<H4>4. <A NAME="Advanced Command Set"></A>Advanced Command Set</H4>
+
+<UL COMPACT>
+<DT><A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_123.html#SEC130">cvs
+tag </A></DT>
+
+<UL COMPACT>
+<DT>One of the exciting features of CVS is its ability to mark all the
+files in a module at once with a symbolic name. You can say `this copy
+of my files is version 3'. And then later say `this file I am working on
+looked better in version 3 so check out the copy that I marked as version
+3.' </DT>
+
+<P>Use <TT>cvs tag</TT> to tag the version of the files that you have checked
+out. You can then at a later date retrieve this version of the files with
+the tag. </P>
+
+<UL COMPACT>
+<UL COMPACT>
+<LI><TT>cvs tag jbabb-mytag</TT></LI>
+</UL>
+</UL>
+
+<P>Later, you can do:</P>
+
+<UL COMPACT>
+<UL COMPACT>
+<LI><TT>cvs checkout -r jbabb-mytag benchmark</TT></LI>
+</UL>
+</UL>
+
+<P>A tag can be deleted with the <TT>-d</TT> option:</P>
+
+<UL COMPACT>
+<UL COMPACT>
+<LI><TT>cvs tag -d jbabb-mytag</TT></LI>
+</UL>
+</UL>
+
+<P>Generally, deleting tags may not be a good idea. Definitely do not delete
+a branch tag. Of course benchmark versions (i.e. v02)&nbsp;should never
+be deleted once they have been tagged correctly. Unless developers find
+them personally useful, we should probably stay away from using a bunch
+of random tags, and then stick to rtag for release management.</P>
+</UL>
+
+<DT><A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_119.html#SEC126">cvs
+rtag</A></DT>
+
+<UL COMPACT>
+<DT>Like tag, rtag marks the current versions of files. The only difference
+is that you don't need to have a checked out module to create the tag,
+simply specify it as an argument. The is the heart of the RAW release command
+and should probably only be used by the release engineer. Here are some
+good examples taken from how I expect the release engineering to work:</DT>
+
+<DT>To freeze current trunk development of benchmark and create Benchmark
+Version 0.2 (note: the source files should ready for release, with the
+inline version set, everything compilable and tested):</DT>
+
+<UL COMPACT>
+<UL COMPACT>
+<LI>cvs rtag v02 benchmark</LI>
+</UL>
+</UL>
+
+<DT>This will recursively go through all the repository directories in
+benchmark and add the v02 tag to each file.</DT>
+</UL>
+
+<DT><A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_119.html#SEC126">cvs
+import</A></DT>
+
+<UL COMPACT>
+<DT>This command is used to create a new module and import files to it.
+Generally this is not all that needs to be done to create a new module,
+however this example is for developers who want to create a test module
+to play around with. First, create a directory and include the files (or
+additional directories) that you want imported. From within the top directory
+to be imported (not above it), do something like:</DT>
+
+<UL COMPACT>
+<UL COMPACT>
+<LI>cvs import -m &quot;Created demo module&quot; demo vendor vendor1</LI>
+</UL>
+</UL>
+
+<P>See that manual about vendor branches, for playing with a demo the names
+are not important. The above command will create a module named demo and
+import into it all the files and directories in the current directory.</P>
+</UL>
+</UL>
+
+<H4><A NAME="Client/Server Notes"></A>5. Client/Server Note:</H4>
+
+<UL>
+<DT>Remote is not working yet. For local use, add to your .cshrc:</DT>
+
+<UL>
+<LI><TT>setenv CVSROOT /projects/raw/cvsroot</TT></LI>
+</UL>
+
+<DT>- jbabb@mit.edu</DT>
+</UL>
+
+</BODY>
+</HTML>

@@ -1,0 +1,11 @@
+This code is copied from the source code for the SLIC interface card and
+modified as follows:
+
+sliceb_drv.c: modified to support memory mapping the entire interface,
+not just the registers, see function yy_map.
+
+poke.c: modified to poke directly into port1 address space instead
+        of the eeprom starting point (by offset everything 0x20000.
+
+interface.c, interface.h: new code to be used as the VLE driver library.
+

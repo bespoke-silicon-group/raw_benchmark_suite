@@ -1,0 +1,60 @@
+/*
+  $Header: /projects/raw/cvsroot/benchmark/include/vmw/interface/slic/interface.syn,v 1.1.1.1 1997/01/15 07:54:42 jbabb Exp $
+   Behavioral Verilog to VirtuaLogic
+
+   This is the synopsys script for compiling interface.v
+*/
+
+   FILE = interface
+   TOP = interface
+
+   search_path = {. /home/vmw/synopsys/libraries/syn \
+                    /home/synopsys/libraries/syn}
+
+
+/* Use VMW reference libraries */
+
+   link_library = {vmw_ref.db}
+   target_library = {vmw_ref.db}
+   synthetic_library = {standard.sldb}
+
+
+/* advanced behavioral synthesis libraries */
+
+   get_license {synlib-alu synlib-advmath synlib-seq}
+   synthetic_library = {dw01.sldb dw02.sldb dw03.sldb dw04.sldb \
+                        dw05.sldb dw06.sldb dw07.sldb}
+
+
+/* a working directory */
+
+   define_design_lib WORK -path ./WORK
+
+
+/* behavioral synthesis */
+
+   analyze -format verilog FILE + ".v"
+   elaborate TOP
+
+
+/* structural synthesis */
+
+   compile -ungroup_all -flatten -map_effort high;
+
+
+/* report results */
+
+   current_design = TOP;
+   report_area > FILE + ".area"
+   report_timing > FILE + ".timing"
+
+
+/* Save design in verilog format for VirtuaLogic compiler */
+
+   write -format verilog -hierarchy -output FILE + "_vmw.v" TOP
+
+
+/* Exit the Compiler. */
+
+   exit
+

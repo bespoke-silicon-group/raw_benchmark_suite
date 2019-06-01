@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Software Driver for SLIC EB-1 SBus Card to IKOS VirtuaLogic Emulation System </TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (X11; I; SunOS 4.1.3_U1 sun4m) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="http://cag-www.lcs.mit.edu/raw/graphics/raw-title3.JPG" BGCOLOR="#FFFFFF"
+TEXT="#00000000" LINK="#0000FF" VLINK="#0000FF" ALINK="#FFFF">
+<BR><BR><BR><BR><BR><UL><UL><UL>
+
+<H3><A HREF="../README.html">Software Driver for SLIC Card to IKOS VirtuaLogic Emulation System</A></H3>
+
+<H4><A HREF=".">Directory Contents</A></H4>
+
+<P>This directory includes the software from Sun Microsystems to build
+the driver for the SLIC EB-1 SBus card. Important files to note are:</P>
+
+<UL>
+<LI><A HREF="README">README </A>from Sun</LI>
+
+<LI><A HREF="README.changes">README.changes </A>list of changes made to
+the distribution.</LI>
+
+<LI><A HREF="Makefile">Makefile</A></LI>
+
+<LI><A HREF="sliceb.o">sliceb.o</A> - the loadable module to be modloaded
+in the OS kernel on the host machine. Here, we have modified the code slight
+from Sun's original distribution (Version 1.0a) to support memory-mapping
+of the PBus port address.</LI>
+
+<LI><A HREF="interface.o">interface.o</A> - the library to link into a
+driver program to communicate with the driver. A single call to this interface
+initializes the registers in the SLIC card appropriately and returns a
+pointer to the base-address on the host to which the PBus is mapped. Subsequent
+reads and writes to that area of memory will invoke SBus communication
+with the emulator.</LI>
+</UL>
+
+<P>The programmers API for the interface is the header file <A HREF="interface.h">interface.h,
+</A>and the source is <A HREF="interface.c">interface.c</A><A HREF="interface.h">.</A></P>
+
+</BODY>
+</HTML>

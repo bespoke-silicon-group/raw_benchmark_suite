@@ -1,0 +1,25 @@
+#------------------------------------------------------------------------------
+# $Header: /projects/raw/cvsroot/benchmark/include/vmw/interface/slic/vmw.clk,v 1.2 1997/08/09 05:56:31 jbabb Exp $
+#
+#  This is the master vmw clk file that describes the interface
+#  between the VLE <-> Target Adapter <-> SLIC Sbus card
+#
+# Authors: Jonathan Babb           (jbabb@lcs.mit.edu)
+#
+# Copyright @ 1997 MIT Laboratory for Computer Science, Cambridge, MA 02129
+#-----------------------------------------------------------------------------
+
+domain domain0
+
+Clock Clk External 0
+Edges  0 R 0 F
+
+Data PBusAddr[16:2] 0 R
+Data PBusData[31:0] 0 R
+Data PBusRDN 0 R
+Data PBusReadyN 0 R
+Data PBusResetN 0 R
+Data PBusWRN 0 R
+
+
+

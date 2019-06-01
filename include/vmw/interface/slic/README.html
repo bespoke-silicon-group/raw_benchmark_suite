@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>IKOS VirtuaLogic Interface to SLIC EB-1 SBus Card</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (X11; I; SunOS 4.1.3_U1 sun4m) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="http://cag-www.lcs.mit.edu/raw/graphics/raw-title3.JPG" BGCOLOR="#FFFFFF"
+TEXT="#00000000" LINK="#0000FF" VLINK="#0000FF" ALINK="#FFFF">
+<BR><BR><BR><BR><BR><UL><UL><UL>
+
+<H2><A HREF="../README.html">IKOS VirtuaLogic Interface to
+SLIC EB-1 SBus Card</A></H2>
+
+<P><A HREF=".">Directory Contents</A></P>
+
+<H4>Introduction from SLIC documentation:</H4>
+
+<P><B>&quot;Dawn VME Products' </B>SLIC EB-1 is a kit for prototyping hardware
+and software which provides a total solution for developing new SBus applications
+or porting existing applications from a different bus architecture. The
+kit centers around the Motoral MC92005 (a.k.a. SLIC) which is a complete
+SBus slave interface in a single chip.&quot;</P>
+
+<P>&quot;The MC92005's PBus is an asnychronous programmable private bus,
+whose signals and timing can be dynamically redefined, allowing it to interface
+to a wide variety of commercially-available peripheral chips.&quot;</P>
+
+<P><B>MIT-RAW setup:</B></P>
+
+<P>The external I/Os of an IKOS &quot;Hermes&quot; VirtuaLogic Emulation
+System are connected to the PBus interface of a SLIC card located in the
+host SPARC workstation. This directory contains the following:</P>
+
+<UL>
+<LI><A HREF="driver/README.html">Software driver</A> code in a sub-directory.
+</LI>
+
+<LI>Verilog code (<A HREF="interface.v">interface.v </A><A HREF="system.v">system.v)</A>
+which implements the VLE side of the interface</LI>
+
+<LI>Synopsys scripts (<A HREF="interface.syn">interface.syn</A> <A HREF="system.syn">system.syn</A>)
+to synthesis this code into an IKOS-supplied target library</LI>
+
+<LI><A HREF="vmw.clk">Clock</A> and <A HREF="vmw.pod">pod</A> files that
+describe the current configuration in our lab</LI>
+</UL>
+
+<P>The current interface is somewhat conservative in communicating between
+the synchronous clocking of the VLE system and the asynchronous PBus. Without
+taking advantage of any knowledge of the internal operations of the virtualization
+and high speed &quot;virtual wires&quot; clock in the VLE, and while sticking
+to a single edge clocking scheme, the interface has 2 cycle reads and writes</P>
+
+<P>Because of its simplicity, the interface itself typical creates a critical
+path within the emulator of only 8 virtual cycles, so we do not expect
+it to be on the critical path of large designs.</P>
+
+</BODY>
+</HTML>

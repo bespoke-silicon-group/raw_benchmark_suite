@@ -1,0 +1,153 @@
+#------------------------------------------------------------------------------
+# $Header: /projects/raw/cvsroot/benchmark/include/vmw/interface/slic/vmw.pod,v 1.2 1997/08/09 05:56:32 jbabb Exp $
+#
+#  This is the master vmw pod file that describes the interface
+#  between the VLE <-> Target Adapter <-> SLIC Sbus card
+#
+# Authors: Jonathan Babb           (jbabb@lcs.mit.edu)
+#
+# Copyright @ 1997 MIT Laboratory for Computer Science, Cambridge, MA 02129
+#-----------------------------------------------------------------------------
+
+#--------------------------------------------------------------------------
+#
+# design terminal name
+#		emulator terminal name
+#				target adapter terminal name
+#					target adapter signal name
+#							SLIC pin #
+#							    LIC signal name
+#--------------------------------------------------------------------------
+
+# Power and Ground:
+#TPOWER		\J100.38	#J32-9	TPOWER		59 +5v
+#GND				#J32-2	GND		56 GND
+
+# External clock input:
+Clk		\J100.41	#J32-18	CLK(1)		Pulse generator
+
+# 32 bit data bus:
+#GND		\J111.1		#
+PBusData[23]	\J111.2		#J31-50	SIG(1)		24 D23
+PBusData[22]	\J111.3		#J31-48 SIG(3)		23 D22
+PBusData[21]	\J111.4		#J31-46 SIG(5)		22 D21
+PBusData[20]	\J111.5		#J31-44 SIG(7)		21 D20
+PBusData[19]	\J111.6		#J31-42 SIG(9)		20 D19
+#GND		\J111.7		#
+PBusData[18]	\J111.8		#J31-40 SIG(11)		19 D18
+PBusData[17]	\J111.9		#J31-38 SIG(13)		18 D17
+PBusData[16]	\J111.10	#J31-36 SIG(17)		17 D16
+PBusData[15]	\J111.11	#J31-35 SIG(17)		16 D15
+PBusData[14]	\J111.12	#J31-32 SIG(19)		15 D14
+PBusData[13]	\J111.13	#J31-30 SIG(21)		14 D13
+PBusData[12]	\J111.14	#J31-28 SIG(23)		13 D12
+PBusData[11]	\J111.15	#J31-26 SIG(25)		12 D11
+PBusData[10]	\J111.16	#J31-24 SIG(27)		11 D10
+#GND		\J111.17	#
+PBusData[9]	\J111.18	#J31-22 SIG(29)		10 D09
+PBusData[8]	\J111.19	#J31-20 SIG(31)		 9 D08
+PBusData[7]	\J111.20	#J31-18 SIG(33)		 8 D07
+PBusData[6]	\J111.21	#J31-16 SIG(35)		 7 D06
+PBusData[5]	\J111.22	#J31-14 SIG(37)		 6 D05
+PBusData[4]	\J111.23	#J31-12	SIG(39)		 5 D04
+PBusData[3]	\J111.24	#J31-10	SIG(41)		 4 D03
+PBusData[2]	\J111.25	#J31-8	SIG(43)		 3 D02
+PBusData[1]	\J111.26	#J31-6	SIG(45)		 2 D01
+#GND		\J111.27	#
+PBusData[0]	\J111.28	#J31-4	SIG(47)		 1 D00
+#GND				#J31-2	GND
+#unused		\J111.29	#J34-50 SIG(49)
+#unused		\J111.30	#J34-48 SIG(51)
+#unused		\J111.31	#J34-46 SIG(53)
+PBusData[24]	\J111.32	#J32-50 SIG(55)		25 D24
+PBusData[25]	\J111.33	#J32-48 SIG(57)		26 D25
+PBusData[26]	\J111.34	#J32-46 SIG(59)		27 D26
+PBusData[27]	\J111.35	#J32-44 SIG(61)		28 D27
+PBusData[28]	\J111.36	#J32-42 SIG(63)		29 D28
+#GND		\J111.37	#
+PBusData[29]	\J111.38	#J32-40 SIG(65)		30 D29
+PBusData[30]	\J111.39	#J32-38 SIG(67)		31 D30
+PBusData[31]	\J111.40	#J32-36 SIG(69)		32 D31
+
+# Control signals:
+PBusReadyN	\J111.41	#J32-34	SIG(71)		50 RDY
+PBusWRN		\J111.42	#J32-32	SIG(73)		57 WR
+PBusRDN		\J111.43	#J32-30	SIG(75)		58 RD
+PBusResetN	\J111.44	#J32-28	SIG(77)		60 Reset*
+#GND		\J111.45	#	GND
+
+# Note: Address bits 0,1 aren't used since everything is word aligned:
+#GND				#J31-1  GND
+#PBusAddr[0]	\J112.99	#J31-3	SIG(172)	65 A00
+#PBusAddr[1]	\J112.98	#J31-5	SIG(170)	66 A01
+
+# The set of usable address bits:
+PBusAddr[2]	\J112.97	#J31-7	SIG(168)	67 A02
+PBusAddr[3]	\J112.96	#J31-9	SIG(166)	68 A03
+#GND		\J112.95	#	GND
+PBusAddr[4]	\J112.94	#J31-11	SIG(164)	69 A04
+PBusAddr[5]	\J112.93	#J31-13	SIG(162)	70 A05
+PBusAddr[6]	\J112.92	#J31-15	SIG(160)	71 A06
+PBusAddr[7]	\J112.91	#J31-17	SIG(158)	72 A07
+PBusAddr[8]	\J112.90	#J31-19	SIG(156)	73 A08
+PBusAddr[9]	\J112.89	#J31-21	SIG(154)	74 A09
+PBusAddr[10]	\J112.88	#J31-23	SIG(152)	75 A10
+#GND		\J112.87	#	GND
+PBusAddr[11]	\J112.86	#J31-25	SIG(150)	76 A11
+PBusAddr[12]	\J112.85	#J31-27	SIG(148)	77 A12
+PBusAddr[13]	\J112.84	#J31-29	SIG(146)	78 A13
+PBusAddr[14]	\J112.83	#J31-31	SIG(144)	79 A14
+PBusAddr[15]	\J112.82	#J31-33	SIG(142)	80 A15
+PBusAddr[16]	\J112.81	#J31-35	SIG(140)	81 A16
+
+# Can't use the following with buffered read/writes:
+#PBusAddr[17]	\J112.80	#J31-37	SIG(139)	82 A17
+#PBusAddr[18]	\J112.79	#J31-39	SIG(136)	83 A18
+#PBusAddr[19]	\J112.78	#J31-41	SIG(134)	84 A19
+#GND		\J112.77	#	GND
+#PBusAddr[20]	\J112.76	#J31-43	SIG(132)	85 A20
+#PBusAddr[21]	\J112.75	#J31-45 SIG(130)	86 A21
+#PBusAddr[22]	\J112.74	#J31-47	SIG(128)	87 A22
+#PBusAddr[23]	\J112.73	#J31-49 SIG(126)	88 A23
+
+# Address bit 24 is not connected with the current cable:
+#PBusAddr[24]						89 A24
+
+# Remaining unconnected middle row SLIC signals:
+#							33 GND
+#							34 SBR*
+#							35 SBG*
+#							36 SSEL*
+#							37 +5V
+#							38 BSCLK
+#							39 GND
+#							40 Brin*/Bgin*
+#							41 INT5
+#							42 INT4
+#							43 +5V
+#							44 INT3
+#							45 INT2
+#							46 GND
+#							47 INT1
+#							48 INT0
+#							49 +5V
+
+#							51 GND
+#							52 AS
+#							53 BW1
+#							54 +5V
+#							55 BGout*/BRout*
+
+#							61 GND
+#							51 OSCLK
+#							52 -12V
+#							53 +12V
+
+# Remaining unconnected bottom row SLIC signals:
+#							90 PCS
+#							91 CS1
+#							92 CS2
+#							93 CS3
+#							94 CS4
+#							95 CS5
+#							90 CS6

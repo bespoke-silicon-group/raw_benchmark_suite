@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Getting Started</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (X11; I; SunOS 4.1.3_U1 sun4m) [Netscape]">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF"
+TEXT="#00000000" LINK="#0000FF" VLINK="#0000FF" ALINK="#FFFF">
+
+<H1><A HREF="README.html">Getting Started</A></H1>
+
+<P>The following documentation was followed by the MIT students who developed
+   each benchmark.</P>
+
+<H2><A NAME="Contents"></A>Contents</H2>
+
+<UL>
+<LI><A HREF="#Administrivia">Administrivia</A></LI>
+
+<LI><A HREF="#Jacobi Example">Jacobi Example</A></LI>
+
+<LI><A HREF="#Your Benchmark">Your Benchmark</A></LI>
+
+<LI><A HREF="#Design Methodology">Design Methodology</A></LI>
+</UL>
+
+<H4><A NAME="Administrivia"></A><A HREF="#Contents">Administrivia</A></H4>
+
+<UL>
+<P>The benchmark suite is maintained under CVS (Concurrent Versions Systems).
+<A HREF="CVSguide.html">CVS Guide </A>explains how to use CVS (as far
+as we are concerned). Basically, set the following environment variables:</P>
+
+<UL>
+<LI>setenv CVSROOT /projects/raw/cvsroot</LI>
+</UL>
+
+<P>and make sure /usr/site/cvs is on your path. You will be checking out
+a local copy of the benchmark suite and working from within it. Later you
+will check you changes back in. So, change into a sandbox directory (or
+actually ~username should be fine). Then execute the command:</P>
+
+<UL>
+<LI>cvs checkout benchmark</LI>
+</UL>
+
+<P>You will see that a new sub-directory &quot;benchmark&quot; is created.
+Work as normal in there developing your benchmark. Then go and read the
+<A HREF="CVSguide.html">CVS Guide </A>when you are ready to release your
+work to the rest of us.</P>
+</UL>
+
+
+<H4><A NAME="Jacobi Example"></A><A HREF="#Contents">Jacobi Example</A></H4>
+
+<UL>
+<P>Look at the <A HREF="../suites/jacobi/README.html">Jacobi example</A>.
+Grok everything by browsing around. In your own checked-out version, try
+building various parts of the benchmark. Just execute &quot;make&quot;
+from the build directory and lots of thinks should start happening. If
+you get all the way to the Xilinx ppr runs, you can just type &quot;quit&quot;
+to stop them. A few other interesting make targets:</P>
+
+<UL>
+<LI>check - simulate distributed behavioral and synthesized designs </LI>
+
+<LI>report - simulate distributed behavioral and synthesized designs </LI>
+
+<LI>run - load and run hardware version </LI>
+
+<LI>soft - compiles and executes software version</LI>
+
+<LI>sim - simulate behavioral verilog design</LI>
+
+<LI>sims - simulates synthesized design</LI>
+
+<LI>vectors -generates test version</LI>
+
+<LI>drivers - compiles driver programs</LI>
+
+<LI>ppr - runs Xilinx ppr</LI>
+
+<LI>compile - runs virtual wires compiler</LI>
+
+<LI>syn - synthesizes design with Synopsys</LI>
+
+<LI>bench - generates benchmark designs</LI>
+</UL>
+</UL>
+
+<H4><A NAME="Your Benchmark"></A><A HREF="#Contents">Your Benchmark</A></H4>
+
+<UL>
+<P>For your new benchmark, the first thing to do is probably clone the
+Jacobi example. Don't use cp -r or tar, as you will mess up CVS.</P>
+
+<P>I have already added a sub-directory under <A HREF="../suites">benchmark/suites</A>
+for the design you are working on. Work from there. The only files you
+need from Jacobi to get started with are in <A HREF="../suites/jacobi/src">benchmark/suites/jacobi/src</A>:</P>
+
+<UL>
+<LI><A HREF="../suites/jacobi/src/Makefile.in">Makefile.in</A></LI>
+
+<LI><A HREF="../suites/jacobi/src/generate.c">generate.c</A></LI>
+
+<LI><A HREF="../suites/jacobi/src/driver.c">driver.c</A></LI>
+
+<LI><A HREF="../suites/jacobi/src/library.v">library.v</A></LI>
+</UL>
+
+<P>Copy these to your own src directory.</P>
+</UL>
+
+<H4><A NAME="Design Methodology"></A><A HREF="#Contents">Design Methodology</A></H4>
+
+<UL>
+<P>You will need to develop a strategy for implementing your algorithm
+in hardware. Think about this for a while before you begin. You should
+then perform the following steps:</P>
+</UL>
+
+<OL>
+<LI>Design a hardware library of special-purpose computing elements.</LI>
+
+<LI>Write a generator program, in C, that takes parameters as inputs and
+generates a top level behavioral verilog program that 1) instantiates all
+computing elements and 2) synthesizes the local communication.</LI>
+
+<LI>Next, write a driver program, in C that is capable of driving either
+software, simulation, or hardware.</LI>
+
+<LI>Run the software version of your benchmark using the driver program
+in software mode.</LI>
+
+<LI>Create simulation test vectors using the driver program in simulation
+mode.</LI>
+
+<LI>Simulate your un-mapped design using the Cadence verilog simulator.</LI>
+
+<LI>Using Synopsys, synthesize your design for the VirtuaLogic emulator.</LI>
+
+<LI>Simulate your synthesized design using the Cadence verilog simulator.</LI>
+
+<LI>Compile your design to FPGAs with the virtual wires compiler.</LI>
+
+<LI>Compile each FPGA with the Xilinx place and route tool. Note: this
+could potentially take a long, long, long, long, long, long time. You may
+want to use more than one workstation in parallel.</LI>
+
+<LI>Download the resulting configuring onto the VirtuaLogic emulator.</LI>
+
+<LI>Log into the VirtuaLogic host workstation, and run the hardware using
+your driver program in hardware mode.</LI>
+
+<P>All of these steps are automated once your generate, driver, and library
+sources are developed. See <A HREF="../include/raw.make">benchmark/include/raw.make
+</A>for more details. Good luck!</P>
+</OL>
+
+<P>Flames to me,</P>
+
+<P><A HREF="mailto:jbabb@mit.edu">jbabb@mit.edu</A></P>
+
+</BODY>
+</HTML>

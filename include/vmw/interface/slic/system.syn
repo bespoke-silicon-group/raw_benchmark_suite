@@ -1,0 +1,27 @@
+/*
+  $Header: /projects/raw/cvsroot/benchmark/include/vmw/interface/slic/system.syn,v 1.1.1.1 1997/01/15 07:54:43 jbabb Exp $
+   Behavioral Verilog to VirtuaLogic
+
+   This is the synopsys script for compiling system.v
+*/
+
+   FILE=system
+   TOP=system
+
+/* all we need to do is run it though Synopsys for formatting */
+
+   read -format verilog FILE + ".v"
+
+
+/* Save design in verilog format for VirtuaLogic compiler */
+
+   write -format verilog -hierarchy -output FILE + "_vmw.v" TOP
+
+/* 
+   Note: ignore all the warning as this point about not having
+         the appropriate link libraries set up...
+*/
+
+/* Exit the Compiler. */
+
+   exit

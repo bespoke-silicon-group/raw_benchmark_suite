@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>IKOS VirtuaLogic Emulation System Transit SBus Interface</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (X11; I; SunOS 4.1.3_U1 sun4m) [Netscape]">
+</HEAD>
+<BODY BACKGROUND="http://cag-www.lcs.mit.edu/raw/graphics/raw-title3.JPG" BGCOLOR="#FFFFFF"
+TEXT="#00000000" LINK="#0000FF" VLINK="#0000FF" ALINK="#FFFF">
+<BR><BR><BR><BR><BR><UL><UL><UL>
+
+<H2><A HREF="../README.html">IKOS VirtuaLogic Emulation System
+Transit SBus Interface</A></H2>
+
+<P><A HREF=".">Directory Contents</A></P>
+
+<P>Our initial SBus interface was base on the MIT-brewed <A HREF="http://www.ai.mit.edu/projects/transit/tn67/tn67.html">Transit
+SBus Interface:</A></P>
+
+<P>&quot;This note describes a simple SBus interface designed for providing
+interfacing from an SBus based machine ( e.g. Sparcstations) to various
+custom hardware. This interface was designed primarily for communication
+with boundary-scan controllers and Transit nodes (<A HREF="http://www.ai.mit.edu/projects/transit/tn38/tn38.html">tn38</A>).
+Nevertheless, it uses a minimal asynchronous interface making it suitable
+for providing simple interfacing to many devices. The over-riding goals
+in this SBus interface implementation were to keep the design simple and
+build it quickly. The interface is an SBus slave card which supports only
+single-word read and write operations. The interface card itself includes
+a boundary-scan controller which supports two independent boundary scan
+paths. &quot;</P>
+
+<P>We implemented an interface between an &quot;Argus&quot; version of
+the IKOS VirtuaLogic Emulator and a Transit Sbus card, providing a 24 bit
+address, 32 bit data connection that was directly read and written via
+memory-mapped on a host SPARC10 workstation. We successfully operated the
+interface in the 100KHz to 1MHz range for certain designs.</P>
+
+<P>We abandon this interface when upgrading to a &quot;Hermes&quot; version
+VirtuaLogic emulator in favor of the commercially available <A HREF="../slic/README.html">SLIC
+EB-1 Sbus interface</A>.</P>
+
+</BODY>
+</HTML>

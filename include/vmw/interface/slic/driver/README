@@ -1,0 +1,54 @@
+"Copyright 1993 Sun Microsystems, Inc."
+
+SLIC EB-1 Driver Source SOFTWARE DIRECTORY
+(Note: This Software is provided "AS IS")
+
+This directory contains the following files/subdirectories:
+
+FILE		Function
+----		--------
+Makefile	"Makes" the loadable device driver, poke & term applications
+dlpi.h		Fake DLPI entry to make SunOS4.x look like SunOS5.x
+m68901.c	Code specific for Motorola UART used in a demo board
+m68901.h	Header file for Motorola UART
+poke*		Compiled application to peek/poke to a SLIC address space
+poke.c		Code for the poke application
+slic.c		SLIC chip specific code
+slic.h		SLIC chip specific header files
+sliceb.INSTALL*	Installation script to install sliceb (SLIC eval board) driver
+sliceb_drv.c	Driver code for SLIC eval board
+sliceb_hw.c	Hardware specific pieces of slic eval board
+sliceb_ioctl.h	IOCTL header function to allow SLIC apps to talk to SLIC driver
+sliceb_var.h	Variables used in SLIC driver defined
+term*		Simple terminal emulator application used with UART + driver
+term.c		Code for terminal emulator application (w/UART)
+util.c		Assorted C utilitites needed for the Make
+
+Note: To install/load the SLIC eb driver, the YYNAME in the sliceb_var.h
+file AND the DRVNAME in the sliceb.INSTALL file must match the
+FCode "name" attribute in the board FCODE prom. Currently = "sliceb".
+
+If the attribute name on your SLIC board differs from "sliceb" than
+you can either change the FCode PROM or modify sliceb_var.h, re-make the
+driver then modify sliceb.INSTALL and re-install/load it.
+
+Note on the term application:
+
+There is a "term" application which functions as a simple terminal
+emulator. This can only be used on a SLIC EB-1 board that has a
+Motorola UART (M68901 wired to port1).  It is provided as as sample
+application program.
+
+Note: The initialization for the UART needed for the term application
+is currently commented out of the the driver (see slic.c).  This is
+because the driver would crash when trying to access a SLIC board
+that does not have a UART connected to it.  To re-enable this
+feature, you can wire a M68901 UART to slic port1 and then un-comment
+out this portion of the code, remake and reinstall.
+
+Also Note: At the present time, we were unable to make the M68901 UART
+generate receive interrupts, so the term application will not receive
+characters.  The application can be modified to "poll" the receive
+buffer on the UART to detect the incoming characters. We are looking
+into this with Motorola.
+
